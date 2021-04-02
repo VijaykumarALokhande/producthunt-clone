@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ProductMC
 from django.utils import timezone
@@ -21,8 +21,12 @@ def createfn(request):
             obj.pub_date = timezone.datetime.now()
             obj.hunter = request.user
             obj.save()
-            return redirect('firsthomepage')
+            return redirect('/products/'+str(obj.id) )
         else:
             return render(request, 'products/create.html', {'error':'enter all product details'})
     else:
         return render(request, 'products/create.html')
+
+def detailfn(request, product_id):
+    specific_product = get_object_or_404(ProductMC, pk=product_id)
+    return render(request, 'products/detail.html', {'pr_dt':specific_product})

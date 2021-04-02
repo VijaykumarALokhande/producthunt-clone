@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <br/>
+<div class="row">
+  <div class="col-2">
+    <img src="{{ pr_dt.icon.url }}" class="img-fluid"/>
+  </div>
+  <div class="col-10">
+    <a href="{{ pr_dt.url }}"><h1>{{pr_dt.title}}</h1></a>
+</div>
+
+<div class="row">
+  <div class="col-8">
+    <img src="{{ pr_dt.image.url }}" width=500 class="img-fluid"/>
+  </div>
+  <div class="col-4">
+    <a href="#"> <button class="btn btn-primary btn-lg"><span class="oi oi-caret-top"></span> Upvote  {{pr_dt.votes_total}}</button></a>
+</div>
+
+<div class="row">
+  <div class="col-4 text-right">
+    <h4>Hunted By {{pr_dt.user}} </h4>
+  </div>
+  <div class="col-4">
+    <h4>{{ pr_dt.pub_date_nice }} </h4>
+</div>
+
+<div class="row">
+  <div class="col-8">
+    <p>{{pr_dt.body}}</p>
+  </div>
+</div>
+
+</div>
+{% endblock %}
