@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import ProductMC
 from django.utils import timezone
 def home(request):
-    return render(request, 'products/home.html')
+    all_products = ProductMC.objects
+    return render(request, 'products/home.html', {'all_products':all_products})
 
 @login_required
 def createfn(request):
@@ -30,3 +31,11 @@ def createfn(request):
 def detailfn(request, product_id):
     specific_product = get_object_or_404(ProductMC, pk=product_id)
     return render(request, 'products/detail.html', {'pr_dt':specific_product})
+
+@login_required
+def upvotefn(request, product_id):
+    if request.method=='POST':
+        specific_product = get_object_or_404(ProductMC, pk=product_id)
+        specific_product.votes_total+=1
+        specific_product.save()
+        return redirect('/products/'+str(specific_product.id) )
