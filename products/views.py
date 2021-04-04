@@ -32,7 +32,7 @@ def detailfn(request, product_id):
     specific_product = get_object_or_404(ProductMC, pk=product_id)
     return render(request, 'products/detail.html', {'pr_dt':specific_product})
 
-@login_required
+@login_required(login_url="/accounts/signup")
 def upvotefn(request, product_id):
     if request.method=='POST':
         specific_product = get_object_or_404(ProductMC, pk=product_id)

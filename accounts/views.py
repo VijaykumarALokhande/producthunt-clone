@@ -32,7 +32,7 @@ def signup(request):
         else:
             return render(request, 'accounts/signup.html', {'error':'PoST  unmatced passwords'})
     else:
-        return render(request, 'accounts/signup.html', {'error':'this is get request'})
+        return render(request, 'accounts/signup.html')
 
 
 
