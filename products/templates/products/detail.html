@@ -18,12 +18,12 @@
     <a href="javascript:{document.getElementById('upvote_id_form').submit() }"> <button class="btn btn-primary btn-lg"><span class="oi oi-caret-top"></span> Upvote  {{pr_dt.votes_total}}</button></a>
 </div>
 
-<div class="row">
+<div class="row pt-2">
   <div class="col-4 text-right">
-    <h4>Hunted By {{pr_dt.hunter.username}} </h4>
+    <h4><span class="oi oi-magnifying-glass"></span> Hunted By {{pr_dt.hunter.username}} </h4>
   </div>
   <div class="col-4">
-    <h4>{{ pr_dt.pub_date_nice }} </h4>
+    <h4><span class="oi oi-clock"></span> {{ pr_dt.pub_date_nice }} </h4>
 </div>
 
 <div class="row">
